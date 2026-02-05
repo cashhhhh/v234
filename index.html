@@ -250,6 +250,7 @@ button{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04
     </div>
     <div class="toolbar">
       <div class="pill">Prepared for <b>Cash McCombs</b></div>
+      <button class="btn" id="openAnalyticsTop">Performance Analytics</button>
       <button class="btn btnPrimary" id="openImport">Import</button>
       <button class="btn" id="exportCsv">Export CSV</button>
       <button class="btn" id="exportJson">Export JSON</button>
@@ -1255,12 +1256,14 @@ OR JSON array example:
 
   // ===== Analytics mode toggle =====
   const openAnalyticsSide = document.getElementById("openAnalyticsSide");
+  const openAnalyticsTop = document.getElementById("openAnalyticsTop");
   const closeAnalyticsSide = document.getElementById("closeAnalyticsSide");
   const backToCalendarTop = document.getElementById("backToCalendarTop");
 
   function goAnalytics(){
     document.body.classList.add("analyticsMode");
     if(openAnalyticsSide) openAnalyticsSide.style.display = "none";
+    if(openAnalyticsTop) openAnalyticsTop.style.display = "none";
     if(closeAnalyticsSide) closeAnalyticsSide.style.display = "";
     try{
       const {ms} = getMonthState();
@@ -1272,11 +1275,13 @@ OR JSON array example:
   function goDashboard(){
     document.body.classList.remove("analyticsMode");
     if(openAnalyticsSide) openAnalyticsSide.style.display = "";
+    if(openAnalyticsTop) openAnalyticsTop.style.display = "";
     if(closeAnalyticsSide) closeAnalyticsSide.style.display = "none";
     render();
   }
 
   if(openAnalyticsSide) openAnalyticsSide.addEventListener("click", goAnalytics);
+  if(openAnalyticsTop) openAnalyticsTop.addEventListener("click", goAnalytics);
   if(closeAnalyticsSide) closeAnalyticsSide.addEventListener("click", goDashboard);
   if(backToCalendarTop) backToCalendarTop.addEventListener("click", goDashboard);
 
@@ -1913,7 +1918,9 @@ User Emails Sent
         <div style="display:flex; justify-content:flex-end; margin-top:10px;">
           <button class="btn" id="calcComms">Calculate Comms</button>
         </div>
-      
+      </div>
+    </div>
+
     <div class="grid2" style="margin-top:12px;">
       <div class="card" style="padding:14px;">
         <div class="sectionTitle">Appointments / Visits paste</div>
@@ -1955,7 +1962,9 @@ Sold Visits
         </div>
         <div class="hr"></div>
         <div class="small">Tip: after you calculate, click “Apply to Calendar” so pacing ratios match your real flow.</div>
-      
+      </div>
+    </div>
+
     <div class="hr"></div>
 
     <div class="grid2">
@@ -1994,11 +2003,6 @@ Used
         <div class="sectionTitle">Cycle-time note</div>
         <div class="small" id="cycleNote">—</div>
       </div>
-    </div>
-</div>
-    </div>
-
-</div>
     </div>
 
     <div class="hr"></div>
