@@ -572,6 +572,178 @@ OR JSON array example:
   <button class="btn btnPrimary" id="fabToday">Today</button>
 </div>
 
+<section id="viewAnalytics" style="padding: 18px; max-width: 1180px; margin: 0 auto;">
+  <div class="card" style="padding:16px;">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>
+        <div class="sectionTitle" style="margin-bottom:6px;">Performance Analytics</div>
+        <div class="small">Paste CRM widgets here to compute conversion %, close rate, and your personal pacing ratios. Then click “Apply to Calendar”.</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn" id="backToCalendarTop">Back</button>
+        <button class="btn btnPrimary" id="applyInsightsTop">Apply to Calendar</button>
+      </div>
+    </div>
+    <div class="hr"></div>
+
+    <div class="grid2">
+      <div class="card" style="padding:14px;">
+        <div class="sectionTitle">Funnel / Stage paste</div>
+        <div class="small" style="margin-bottom:10px;">Paste funnel text with counts like “7 of 15”.</div>
+        <textarea id="funnelPaste" class="full" style="min-height:220px;" placeholder="Attempted Contact
+15 of 15
+Engaged
+7 of 15
+Appointment Created
+5 of 15
+Appointment Showed
+1 of 7
+Sold
+0 of 1"></textarea>
+        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
+          <button class="btn" id="calcFunnel">Calculate Funnel</button>
+        </div>
+      </div>
+
+      <div class="card" style="padding:14px;">
+        <div class="sectionTitle">Communications paste</div>
+        <div class="small" style="margin-bottom:10px;">Paste Communications widget (Calls Out, User Texts Sent, User Emails Sent).</div>
+        <textarea id="commsPaste" class="full" style="min-height:220px;" placeholder="Communications
+Calls Out
+235
+User Texts Sent
+468
+User Emails Sent
+46"></textarea>
+        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
+          <button class="btn" id="calcComms">Calculate Comms</button>
+        </div>
+      
+    <div class="grid2" style="margin-top:12px;">
+      <div class="card" style="padding:14px;">
+        <div class="sectionTitle">Appointments / Visits paste</div>
+        <div class="small" style="margin-bottom:10px;">Paste the Appointments + Visits widget (Created / Scheduled / Shown / Sold Visits, etc.).</div>
+        <textarea id="activityPaste" class="full" style="min-height:220px;" placeholder="Appointments
+Created
+13
+Scheduled
+16
+Shown
+5
+Test Drive
+1
+Delivery
+0
+Visits
+Total Visits
+17
+Walk-in Visits
+12
+Scheduled Visits
+5
+Sold Visits
+5"></textarea>
+        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
+          <button class="btn" id="calcActivity">Calculate Activity</button>
+        </div>
+      </div>
+
+      <div class="card" style="padding:14px;">
+        <div class="sectionTitle">Activity KPIs</div>
+        <div class="kpis" style="margin-top:10px;">
+          <div class="kpi"><div class="small">Appt Show Rate</div><div class="big" id="kpiApptShow2">—</div></div>
+          <div class="kpi"><div class="small">Visit Close Rate</div><div class="big" id="kpiVisitClose">—</div></div>
+          <div class="kpi"><div class="small">Visits / Sale</div><div class="big" id="kpiVisitsPerSale">—</div></div>
+          <div class="kpi"><div class="small">Test Drive Rate</div><div class="big" id="kpiTD">—</div></div>
+          <div class="kpi"><div class="small">Walk-in Mix</div><div class="big" id="kpiWalkMix">—</div></div>
+          <div class="kpi"><div class="small">Unsold Visit Share</div><div class="big" id="kpiUnsoldShare">—</div></div>
+        </div>
+        <div class="hr"></div>
+        <div class="small">Tip: after you calculate, click “Apply to Calendar” so pacing ratios match your real flow.</div>
+      
+    <div class="hr"></div>
+
+    <div class="grid2">
+      <div class="card" style="padding:14px;">
+        <div class="sectionTitle">Deal history paste (last ~3 months)</div>
+        <div class="small" style="margin-bottom:10px;">
+          Paste the Opportunities / Deals table text (stages, vehicle, new/used, days, salesperson, units, dates).
+          <br><span class="small" style="opacity:.85;">Disclaimer: This tool estimates metrics from pasted text. If the export is incomplete or formatted differently, totals may be off. Always sanity-check against your CRM reports.</span>
+        </div>
+        <textarea id="dealsPaste" class="full" style="min-height:260px;" placeholder="Closed or Sold
+2024 INFINITI QX50
+Used
+...
+01/15/2026
+..."></textarea>
+        <div style="display:flex; justify-content:flex-end; margin-top:10px; gap:10px; flex-wrap:wrap;">
+          <button class="btn" id="calcDeals">Calculate Deal Metrics</button>
+          <button class="btn" id="applyDealsToPacing">Use for Pacing Notes</button>
+        </div>
+      </div>
+
+      <div class="card" style="padding:14px;">
+        <div class="sectionTitle">3‑Month Pattern Metrics</div>
+        <div class="kpis" style="margin-top:10px;">
+          <div class="kpi"><div class="small">Total Units (weighted)</div><div class="big" id="kpiUnits3m">—</div></div>
+          <div class="kpi"><div class="small">Deals Count</div><div class="big" id="kpiDeals3m">—</div></div>
+          <div class="kpi"><div class="small">Avg Days on Deal</div><div class="big" id="kpiAvgDays">—</div></div>
+          <div class="kpi"><div class="small">New Mix</div><div class="big" id="kpiNewMix">—</div></div>
+          <div class="kpi"><div class="small">Used Mix</div><div class="big" id="kpiUsedMix">—</div></div>
+          <div class="kpi"><div class="small">Split Share</div><div class="big" id="kpiSplitShare">—</div></div>
+        </div>
+        <div class="hr"></div>
+        <div class="sectionTitle">Stage snapshot</div>
+        <div class="small" id="kpiStageSnap">—</div>
+        <div class="hr"></div>
+        <div class="sectionTitle">Cycle-time note</div>
+        <div class="small" id="cycleNote">—</div>
+      </div>
+    </div>
+</div>
+    </div>
+
+</div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="grid2">
+      <div class="card" style="padding:14px;">
+        <div class="sectionTitle">Key Metrics</div>
+        <div class="kpis" style="margin-top:10px;">
+          <div class="kpi"><div class="small">Lead → Engaged</div><div class="big" id="kpiLeadEng">—</div></div>
+          <div class="kpi"><div class="small">Engaged → Appt</div><div class="big" id="kpiEngAppt">—</div></div>
+          <div class="kpi"><div class="small">Appt → Show</div><div class="big" id="kpiApptShow">—</div></div>
+          <div class="kpi"><div class="small">Show → Sold</div><div class="big" id="kpiShowSold">—</div></div>
+          <div class="kpi"><div class="small">Overall Close</div><div class="big" id="kpiClose">—</div></div>
+          <div class="kpi"><div class="small">Contacts / Sale</div><div class="big" id="kpiContactsPerSale">—</div></div>
+        </div>
+
+        <div class="hr"></div>
+        <div class="sectionTitle">Ratios (feeds the calendar pacing)</div>
+        <div class="form">
+          <div><label>Contacts per Sale</label><input id="ratioContactsPerSale" type="number" min="1" step="1" value="85"></div>
+          <div><label>Appointments per Sale</label><input id="ratioApptsPerSale" type="number" min="0" step="0.1" value="4"></div>
+          <div><label>Show Rate</label><input id="ratioShowRate" type="number" min="0" max="1" step="0.01" value="0.60"></div>
+          <div class="full small">Click “Apply to Calendar” to push these into Month Settings.</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:14px;">
+        <div class="sectionTitle">Preview at your goal</div>
+        <div class="kpis" style="margin-top:10px;">
+          <div class="kpi"><div class="small">Goal Units</div><div class="big" id="prevGoalUnits">—</div></div>
+          <div class="kpi"><div class="small">Contacts Needed</div><div class="big" id="prevContactsNeeded">—</div></div>
+          <div class="kpi"><div class="small">Appts Needed</div><div class="big" id="prevApptsNeeded">—</div></div>
+          <div class="kpi"><div class="small">Shows Needed</div><div class="big" id="prevShowsNeeded">—</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <script>
 (() => {
   // ===== background drag/drop =====
@@ -1867,176 +2039,6 @@ function applyInsights(){
 })();
 </script>
 
-<section id="viewAnalytics" style="padding: 18px; max-width: 1180px; margin: 0 auto;">
-  <div class="card" style="padding:16px;">
-    <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-      <div>
-        <div class="sectionTitle" style="margin-bottom:6px;">Performance Analytics</div>
-        <div class="small">Paste CRM widgets here to compute conversion %, close rate, and your personal pacing ratios. Then click “Apply to Calendar”.</div>
-      </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button class="btn" id="backToCalendarTop">Back</button>
-        <button class="btn btnPrimary" id="applyInsightsTop">Apply to Calendar</button>
-      </div>
-    </div>
-    <div class="hr"></div>
-
-    <div class="grid2">
-      <div class="card" style="padding:14px;">
-        <div class="sectionTitle">Funnel / Stage paste</div>
-        <div class="small" style="margin-bottom:10px;">Paste funnel text with counts like “7 of 15”.</div>
-        <textarea id="funnelPaste" class="full" style="min-height:220px;" placeholder="Attempted Contact
-15 of 15
-Engaged
-7 of 15
-Appointment Created
-5 of 15
-Appointment Showed
-1 of 7
-Sold
-0 of 1"></textarea>
-        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
-          <button class="btn" id="calcFunnel">Calculate Funnel</button>
-        </div>
-      </div>
-
-      <div class="card" style="padding:14px;">
-        <div class="sectionTitle">Communications paste</div>
-        <div class="small" style="margin-bottom:10px;">Paste Communications widget (Calls Out, User Texts Sent, User Emails Sent).</div>
-        <textarea id="commsPaste" class="full" style="min-height:220px;" placeholder="Communications
-Calls Out
-235
-User Texts Sent
-468
-User Emails Sent
-46"></textarea>
-        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
-          <button class="btn" id="calcComms">Calculate Comms</button>
-        </div>
-      
-    <div class="grid2" style="margin-top:12px;">
-      <div class="card" style="padding:14px;">
-        <div class="sectionTitle">Appointments / Visits paste</div>
-        <div class="small" style="margin-bottom:10px;">Paste the Appointments + Visits widget (Created / Scheduled / Shown / Sold Visits, etc.).</div>
-        <textarea id="activityPaste" class="full" style="min-height:220px;" placeholder="Appointments
-Created
-13
-Scheduled
-16
-Shown
-5
-Test Drive
-1
-Delivery
-0
-Visits
-Total Visits
-17
-Walk-in Visits
-12
-Scheduled Visits
-5
-Sold Visits
-5"></textarea>
-        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
-          <button class="btn" id="calcActivity">Calculate Activity</button>
-        </div>
-      </div>
-
-      <div class="card" style="padding:14px;">
-        <div class="sectionTitle">Activity KPIs</div>
-        <div class="kpis" style="margin-top:10px;">
-          <div class="kpi"><div class="small">Appt Show Rate</div><div class="big" id="kpiApptShow2">—</div></div>
-          <div class="kpi"><div class="small">Visit Close Rate</div><div class="big" id="kpiVisitClose">—</div></div>
-          <div class="kpi"><div class="small">Visits / Sale</div><div class="big" id="kpiVisitsPerSale">—</div></div>
-          <div class="kpi"><div class="small">Test Drive Rate</div><div class="big" id="kpiTD">—</div></div>
-          <div class="kpi"><div class="small">Walk-in Mix</div><div class="big" id="kpiWalkMix">—</div></div>
-          <div class="kpi"><div class="small">Unsold Visit Share</div><div class="big" id="kpiUnsoldShare">—</div></div>
-        </div>
-        <div class="hr"></div>
-        <div class="small">Tip: after you calculate, click “Apply to Calendar” so pacing ratios match your real flow.</div>
-      
-    <div class="hr"></div>
-
-    <div class="grid2">
-      <div class="card" style="padding:14px;">
-        <div class="sectionTitle">Deal history paste (last ~3 months)</div>
-        <div class="small" style="margin-bottom:10px;">
-          Paste the Opportunities / Deals table text (stages, vehicle, new/used, days, salesperson, units, dates).
-          <br><span class="small" style="opacity:.85;">Disclaimer: This tool estimates metrics from pasted text. If the export is incomplete or formatted differently, totals may be off. Always sanity-check against your CRM reports.</span>
-        </div>
-        <textarea id="dealsPaste" class="full" style="min-height:260px;" placeholder="Closed or Sold
-2024 INFINITI QX50
-Used
-...
-01/15/2026
-..."></textarea>
-        <div style="display:flex; justify-content:flex-end; margin-top:10px; gap:10px; flex-wrap:wrap;">
-          <button class="btn" id="calcDeals">Calculate Deal Metrics</button>
-          <button class="btn" id="applyDealsToPacing">Use for Pacing Notes</button>
-        </div>
-      </div>
-
-      <div class="card" style="padding:14px;">
-        <div class="sectionTitle">3‑Month Pattern Metrics</div>
-        <div class="kpis" style="margin-top:10px;">
-          <div class="kpi"><div class="small">Total Units (weighted)</div><div class="big" id="kpiUnits3m">—</div></div>
-          <div class="kpi"><div class="small">Deals Count</div><div class="big" id="kpiDeals3m">—</div></div>
-          <div class="kpi"><div class="small">Avg Days on Deal</div><div class="big" id="kpiAvgDays">—</div></div>
-          <div class="kpi"><div class="small">New Mix</div><div class="big" id="kpiNewMix">—</div></div>
-          <div class="kpi"><div class="small">Used Mix</div><div class="big" id="kpiUsedMix">—</div></div>
-          <div class="kpi"><div class="small">Split Share</div><div class="big" id="kpiSplitShare">—</div></div>
-        </div>
-        <div class="hr"></div>
-        <div class="sectionTitle">Stage snapshot</div>
-        <div class="small" id="kpiStageSnap">—</div>
-        <div class="hr"></div>
-        <div class="sectionTitle">Cycle-time note</div>
-        <div class="small" id="cycleNote">—</div>
-      </div>
-    </div>
-</div>
-    </div>
-
-</div>
-    </div>
-
-    <div class="hr"></div>
-
-    <div class="grid2">
-      <div class="card" style="padding:14px;">
-        <div class="sectionTitle">Key Metrics</div>
-        <div class="kpis" style="margin-top:10px;">
-          <div class="kpi"><div class="small">Lead → Engaged</div><div class="big" id="kpiLeadEng">—</div></div>
-          <div class="kpi"><div class="small">Engaged → Appt</div><div class="big" id="kpiEngAppt">—</div></div>
-          <div class="kpi"><div class="small">Appt → Show</div><div class="big" id="kpiApptShow">—</div></div>
-          <div class="kpi"><div class="small">Show → Sold</div><div class="big" id="kpiShowSold">—</div></div>
-          <div class="kpi"><div class="small">Overall Close</div><div class="big" id="kpiClose">—</div></div>
-          <div class="kpi"><div class="small">Contacts / Sale</div><div class="big" id="kpiContactsPerSale">—</div></div>
-        </div>
-
-        <div class="hr"></div>
-        <div class="sectionTitle">Ratios (feeds the calendar pacing)</div>
-        <div class="form">
-          <div><label>Contacts per Sale</label><input id="ratioContactsPerSale" type="number" min="1" step="1" value="85"></div>
-          <div><label>Appointments per Sale</label><input id="ratioApptsPerSale" type="number" min="0" step="0.1" value="4"></div>
-          <div><label>Show Rate</label><input id="ratioShowRate" type="number" min="0" max="1" step="0.01" value="0.60"></div>
-          <div class="full small">Click “Apply to Calendar” to push these into Month Settings.</div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:14px;">
-        <div class="sectionTitle">Preview at your goal</div>
-        <div class="kpis" style="margin-top:10px;">
-          <div class="kpi"><div class="small">Goal Units</div><div class="big" id="prevGoalUnits">—</div></div>
-          <div class="kpi"><div class="small">Contacts Needed</div><div class="big" id="prevContactsNeeded">—</div></div>
-          <div class="kpi"><div class="small">Appts Needed</div><div class="big" id="prevApptsNeeded">—</div></div>
-          <div class="kpi"><div class="small">Shows Needed</div><div class="big" id="prevShowsNeeded">—</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 </body>
 </html>
