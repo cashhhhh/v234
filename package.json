@@ -1,0 +1,13 @@
+{
+  "name": "salespace",
+  "version": "1.0.0",
+  "description": "Sales Pace Calendar",
+  "scripts": {
+    "test": "echo \"No tests\" && exit 0"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@netlify/blobs": "^10.5.0"
+  }
+}
